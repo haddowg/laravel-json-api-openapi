@@ -1,0 +1,23 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 7
+    paths:
+        - src
+        - config
+        - database
+    tmpDir: build/phpstan
+    checkOctaneCompatibility: true
+    checkModelProperties: true
+    ignoreErrors:
+        -
+            message: '#Access to .* property Spatie\\Invade\\Invader<.*>#'
+        -
+            message: '#Call to an undefined .* Spatie\\Invade\\Invader<.*>#'
+        -
+            message: '#.*deprecated interface Illuminate\\Contracts\\Validation\\Rule.*#'
+            identifier: parameter.deprecatedInterface
+        -
+            message: '#.*no value type specified in iterable type LaravelJsonApi\\Contracts\\Schema\\Schema\.#'
+            identifier:  missingType.iterableValue
