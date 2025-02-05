@@ -10,7 +10,7 @@ use Illuminate\Contracts\Console\PromptsForMissingInput;
 
 class GenerateJsonApiOpenApiSpecCommand extends Command implements PromptsForMissingInput
 {
-    public $signature = 'jsonapi:docs {server} {--format=json : The format of the output (json or yaml)} {--filename= : The filename to write the output to}';
+    public $signature = 'jsonapi:docs {server} {--f|format=json : The format of the output (json or yaml)} {--o|output= : The filename to write the output to}';
 
     public $description = 'Generate OpenAPI documentation for your JSON:API';
 
@@ -20,7 +20,7 @@ class GenerateJsonApiOpenApiSpecCommand extends Command implements PromptsForMis
 
         $this->info("Generating OpenAPI documentation for server: {$this->argument('server')}");
 
-        $filename = $this->option('filename') ?? $this->argument('server') . '.' . $this->option('format');
+        $filename = $this->option('output') ?? $this->argument('server') . '.' . $this->option('format');
 
         $generator->write(
             $this->argument('server'),
