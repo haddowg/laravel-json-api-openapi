@@ -16,9 +16,8 @@ trait PerformsTranslation
         $server = $this->builder()->server()->name();
 
         $value = $this->findTranslation([
-            "jsonapi.{$server}.{$key}",
-            "jsonapi.{$key}",
-            "jsonapi-openapi::{$key}",
+            "{$server}.{$key}",
+            "{$key}",
         ], array_merge($this->getTranslationReplacements(), $replacements), $default);
 
         return is_string($value) ? $value : $key;
@@ -44,13 +43,12 @@ trait PerformsTranslation
     {
         $server = $this->builder()->server()->name();
 
-        return $this->findTranslation(array_filter([
-            $resourceType ? "{$server}.resources.{$resourceType}.{$key}" : null,
+        return $this->findTranslation([
+            "{$server}.resources.{$resourceType}.{$key}",
             "{$server}.resource.{$key}",
-            $resourceType ? "jsonapi.resources.{$resourceType}.{$key}" : null,
-            "jsonapi.resource.{$key}",
-            "jsonapi-openapi::resource.{$key}",
-        ]), array_merge($this->getResourceTranslationReplacements($resourceType), $replacements), $default);
+            "resources.{$resourceType}.{$key}",
+            "resource.{$key}",
+        ], array_merge($this->getResourceTranslationReplacements($resourceType), $replacements), $default);
     }
 
     /**
@@ -60,8 +58,9 @@ trait PerformsTranslation
     private function findTranslation(array $keys, array $replacements = [], ?string $default = null): ?string
     {
         foreach ($keys as $key) {
-            $line = trans($key, $replacements);
-            if ($line !== $key && is_string($line)) {
+            $namespaced = 'jsonapi-openapi::' . $key;
+            $line = trans($namespaced, $replacements);
+            if ($line !== $namespaced && is_string($line)) {
                 return $line;
             }
         }

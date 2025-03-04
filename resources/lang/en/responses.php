@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * This file is used to define and localise descriptions for common responses in the spec.
+ */
 return [
     '401' => [
         'description' => 'Unauthorized',

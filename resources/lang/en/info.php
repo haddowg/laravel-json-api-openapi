@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Info Section.
+ * Info Section of the OpenAPI Specification.
  */
 return [
     'title' => ':App :server',

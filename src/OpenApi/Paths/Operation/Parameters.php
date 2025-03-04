@@ -9,6 +9,7 @@ use haddowg\JsonApiOpenApi\Descriptors\Filters;
 use haddowg\JsonApiOpenApi\Descriptors\Id;
 use haddowg\JsonApiOpenApi\Descriptors\Route;
 use Illuminate\Support\Str;
+use LaravelJsonApi\Core\Support\Str as JsonApiStr;
 
 readonly class Parameters
 {
@@ -40,7 +41,7 @@ readonly class Parameters
         if ($this->route->hasResourceId()) {
             $example = $this->route->resources()->single($this->route->routeResourceType())?->id();
 
-            $name = Str::camel($this->route->originalParameter($this->route::ROUTE_PARAM_RESOURCE_ID_NAME)) . 'Id';
+            $name = Str::camel($this->route->originalParameter($this->route::ROUTE_PARAM_RESOURCE_ID_NAME)) . '_Id';
 
             $id = $this->route->schema()?->id();
             $parameter = [
@@ -57,7 +58,10 @@ readonly class Parameters
             }
 
             $parameter = new Parameter($parameter);
-            if ($this->route->parameter($this->route::ROUTE_PARAM_RESOURCE_ID_NAME) !== Str::singular($this->route->routeSchema()->uriType())) {
+            $parameterName = Str::camel(JsonApiStr::singular($this->route->routeResourceType()));
+
+            dump($this->route->parameter($this->route::ROUTE_PARAM_RESOURCE_ID_NAME), $parameterName);
+            if ($this->route->parameter($this->route::ROUTE_PARAM_RESOURCE_ID_NAME) !== $parameterName) {
                 return $parameter;
             }
 

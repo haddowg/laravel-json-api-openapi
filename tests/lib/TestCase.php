@@ -1,6 +1,6 @@
 <?php
 
-namespace haddowg\JsonApiOpenApi\Tests\lib;
+namespace haddowg\JsonApiOpenApi\Tests;
 
 use haddowg\JsonApiOpenApi\JsonApiOpenApiServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;

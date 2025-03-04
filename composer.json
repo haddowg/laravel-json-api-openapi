@@ -40,8 +40,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "haddowg\\JsonApiOpenApi\\Tests\\": "tests/lib",
-            "Workbench\\App\\": "tests/app/"
+            "App\\": "tests/app",
+            "haddowg\\JsonApiOpenApi\\Tests\\": "tests/lib"
         }
     },
     "scripts": {

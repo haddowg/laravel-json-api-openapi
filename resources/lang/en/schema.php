@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * This file is used to define and localise descriptions for common schema in the spec.
+ */
 return [
     'jsonapi' => [
         'description' => 'JSON:API Specification',

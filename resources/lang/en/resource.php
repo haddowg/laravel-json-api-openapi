@@ -1,5 +1,41 @@
 <?php
-
+/**
+ * This file is used to define and localise descriptions and summaries in the spec for any/all resource type.
+ *
+ * To customize these keys for specific resources or define resource specific keys such as attributes see the `resources.php` file in this vendor directory.
+ *
+ * These translations are used for every server so you do not need to duplicate for common resources.
+ * If however you need to override a translation for a specific server, you can do so by adding
+ * any keys within a `resource` key in a `{serverName}.php` language file in this vendor directory.
+ * e.g. `resources/lang/vendor/jsonapi-openapi/en/v1.php`
+ * ```
+ * return [
+ *  'actions' => [
+ *     'viewingAny' => [
+ *          ...
+ *     ],
+ *  ],
+ * ];
+ * ```
+ *
+ * The following common parameters are provided when translating a key:
+ *
+ * - :app - The name of the application (e.g. config('app.name'))
+ * - :server - The jsonapi server name (e.g. 'v1')
+ * - :jsonapi-version - The JSON:API specification version (e.g. '1.0')
+ * - :resource-type - The resource type (e.g. 'my-resources')
+ * - :resource-type-singular - The singular form of the resource type (e.g. 'my-resource')
+ *
+ * When translating for a relationship operation the following additional parameters are provided:
+ *
+ * - :relation - The relationship name (e.g. 'author')
+ * - :related-resource-type - The related resource type (e.g. 'user') this will automatically be the singular or plural form depending on the relationship type.
+ * - :parent-resource-type - The parent resource type (e.g. 'posts')
+ * - :parent-resource-type-singular - The singular form of the parent resource type (e.g. 'post')
+ *
+ * These can be used via placeholders in the translations as per usual. See [Replacing Placeholders](https://laravel.com/docs/11.x/localization#replacing-parameters-in-translation-strings) in the Laravel docs.
+ * Some additional parameters may be provided depending on the context, these will be documented below.
+ */
 return [
     'actions' => [
         'viewingAny' => [
@@ -142,6 +178,7 @@ return [
         'update' => 'The :Resource-type-singular resource to be updated',
     ],
     'parameters' => [
+        'resource-id' => 'A :Resource-type-singular Resource Identifier',
         'filter' => 'Filters the :Resource-type',
     ],
     'schema' => [

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * This file is used to define and localise descriptions for common pagination parameters in the spec.
+ */
 return [
     // Page based pagination
     'page' => [

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * This file is used to define and localise descriptions for common headers in the spec.
+ */
 return [
     'retryAfter' => 'The number of seconds to wait before making a new request',
     'xRateLimit' => [
